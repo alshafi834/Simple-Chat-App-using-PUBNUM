@@ -1,0 +1,17 @@
+{
+  "name": "chatengn",
+  "version": "1.0.0",
+  "description": "simple chat engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shafi",
+  "license": "ISC",
+  "dependencies": {
+    "chat-engine": "^0.9.18",
+    "chat-engine-online-user-search": "0.0.10",
+    "chat-engine-random-username": "0.0.5",
+    "chat-engine-typing-indicator": "0.0.9"
+  }
+}

@@ -87,5 +87,30 @@ angular.module('chatApp', ['open-chat-framework'])
       payload.isSelf = payload.sender.uuid == $scope.me.uuid;
       // add the message to the array
       $scope.messages.push(payload);
+
+
+
     });
+
+    // leave a chatroom and remove from global chat list
+    $scope.leave = function (index) {
+      $scope.chat.leave();
+      $scope.chats.splice(index, 1);
+    };
+
+
+
+    // find an user name from global list
+    $scope.searchFromGlobal = function () {
+      if($scope.mySearchFromGlobal) {
+        $scope.users = $scope.ChatEngine.global.onlineUserSearch.search($scope.mySearchFromGlobal);
+      } else {
+        $scope.users = [];
+      }
+    };
+    // invite to user to join
+    $scope.invite = function (user) {
+      $scope.chat.invite(user);
+    };
+    
   });

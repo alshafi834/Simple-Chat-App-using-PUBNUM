@@ -93,7 +93,7 @@
 
 
             <div class="col-md-6">
-                <div id="chats" class="row" ng-repeat="chat in chats">
+                <div id="chats" class="row" ng-repeat="chat in chats" ng-controller="chat">
                     <div class="chat col-xs-12">
                         <div class="card">
                             <div class="card-header">
@@ -101,7 +101,7 @@
                                     {{chat.channel}}
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <a href="" class="close">x</a>
+                                    <a href="" ng-click="leave($index)" class="close">x</a>
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush online-list-sub">
@@ -111,7 +111,7 @@
                                 </li>
                             </ul>
 
-                            <div class="card-block" ng-controller="chat">
+                            <div class="card-block">
                                 <div>
                                     <div ng-repeat="message in messages" ng-class="{'hide-username': message.sameUser, 'text-xs-right': !message.isSelf}">
                                         <p class="text-muted username">{{message.sender.state.username}}</p>
@@ -129,6 +129,27 @@
                                 </form>
                             </div>
 
+
+
+                            <hr />
+                            <div class="card-block">
+                                <h6>Add a user to this chat</h6>
+                                <form ng-submit="searchFromGlobal()">
+                                    <div class="input-group">
+                                        <input name="usernameSearchGlobal" type="text" class="form-control message"
+                                               placeholder="Add User" ng-change="searchFromGlobal()"
+                                               ng-model="mySearchFromGlobal">
+                                    </div>
+                                </form>
+                                <ul class="list-group list-group-flush online-list-sub">
+                                    <li class="list-group-item" ng-repeat="(uuid, user) in users">
+                                        <a href="#" ng-click="invite(user)"> {{user.state.username}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+
+                            
                         </div>
                     </div>
                 </div>
